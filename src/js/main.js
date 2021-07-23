@@ -28,6 +28,7 @@ class Gallery {
       "input",
       _.debounce(this.getInputData.bind(this), 500)
     );
+    this.removeData();
     arrData.map((obj) => {
       this.list.insertAdjacentHTML(
         "beforeend",
@@ -41,6 +42,9 @@ class Gallery {
     let result = `https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${this.search}&page=${this.pageNumber}&per_page=12&key=${this.apiKey}`;
     this.fetchImages(result);
     return result;
+  }
+  removeData() {
+    this.list.innerHTML = "";
   }
 }
 
