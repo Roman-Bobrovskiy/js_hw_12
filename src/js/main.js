@@ -1,4 +1,5 @@
 import inputSearch from "../tempaltes/search.hbs";
+import cards from "../tempaltes/cards.hbs";
 class Gallery {
   constructor() {
     this.search = "";
@@ -9,6 +10,7 @@ class Gallery {
     this.fetchImages();
     console.log(this);
   }
+
   fetchImages() {
     let URL = `https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${this.search}&page=${this.pageNumber}&per_page=12&key=${this.apiKey}`;
     console.log(URL);
@@ -26,13 +28,35 @@ class Gallery {
     this.search = document.querySelector("#search-form")[0];
     this.search.addEventListener(
       "input",
-      _.debounce(this.getInputData.bind(this), 500)
+      _.debounce(this.getInputData.bind(this), 700)
     );
     this.removeData();
     arrData.map((obj) => {
       this.list.insertAdjacentHTML(
         "beforeend",
-        `<li class="smallImages"> <img src="${obj.previewURL}" alt="${obj.tags}"></li>`
+        `<ul class="gallery">
+        <div class="photo-card">
+         <img src="${obj.webformatURL}" alt="${obj.tags}" />
+         <div class="stats">
+           <p class="stats-item">
+             <i class="material-icons">thumb_up</i>
+             ${obj.likes}
+           </p>
+           <p class="stats-item">
+             <i class="material-icons">visibility</i>
+             ${obj.views}
+           </p>
+           <p class="stats-item">
+             <i class="material-icons">comment</i>
+             ${obj.comments}
+           </p>
+           <p class="stats-item">
+             <i class="material-icons">cloud_download</i>
+             ${obj.downloads}
+           </p>
+         </div>
+       </div>
+       </ul>`
       );
     });
   };
@@ -43,6 +67,7 @@ class Gallery {
     this.fetchImages(result);
     return result;
   }
+
   removeData() {
     this.list.innerHTML = "";
   }
