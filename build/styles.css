@@ -1,0 +1,1 @@
+.wrapHeader{display:flex;justify-content:center}#gallery{grid-gap:12px;display:grid;grid-auto-rows:240px;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));list-style:none;margin-left:auto;margin-right:auto;padding:0;width:1200px}#gallery>li>img{display:flex;justify-content:center;width:100%}

@@ -29,6 +29,7 @@
   "dependencies": {
     "basiclightbox": "^5.0.4",
     "handlebars-loader": "^1.7.1",
+    "lodash": "^4.17.21",
     "node-sass": "^6.0.0"
   }
 }
