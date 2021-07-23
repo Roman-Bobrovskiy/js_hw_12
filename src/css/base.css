@@ -2,12 +2,16 @@
   display: flex;
   justify-content: center;
 }
+.wrapMain {
+  display: flex;
+  justify-content: center;
+}
 
 #gallery {
   display: grid;
   width: 1200px;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-  grid-auto-rows: 160px;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  grid-auto-rows: 260px;
   grid-gap: 12px;
   padding: 0;
   list-style: none;
@@ -16,12 +20,30 @@
 }
 #gallery > li {
   display: flex;
-  /* flex-wrap: nowrap; */
+  flex-direction: column;
   justify-content: center;
+  height: 100%;
 }
 
 #gallery > li > img {
   display: flex;
   justify-content: center;
-  /* width: 100%; */
+  height: 80%;
+  width: 100%;
+  border-radius: 5px;
+  object-fit: cover;
+}
+#gallery > li > img:hover {
+  transform: scale(1.05);
+  cursor: zoom-in;
+}
+.stats {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  color: gray;
+}
+.stats > p {
+  display: flex;
+  align-items: center;
 }

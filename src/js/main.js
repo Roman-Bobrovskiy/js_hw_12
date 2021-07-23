@@ -34,29 +34,27 @@ class Gallery {
     arrData.map((obj) => {
       this.list.insertAdjacentHTML(
         "beforeend",
-        `<ul class="gallery">
-        <div class="photo-card">
+        `<li class="photo-card">
          <img src="${obj.webformatURL}" alt="${obj.tags}" />
          <div class="stats">
            <p class="stats-item">
              <i class="material-icons">thumb_up</i>
-             ${obj.likes}
+               ${obj.likes}
            </p>
            <p class="stats-item">
              <i class="material-icons">visibility</i>
-             ${obj.views}
+               ${obj.views}
            </p>
            <p class="stats-item">
              <i class="material-icons">comment</i>
-             ${obj.comments}
+               ${obj.comments}
            </p>
            <p class="stats-item">
              <i class="material-icons">cloud_download</i>
-             ${obj.downloads}
+               ${obj.downloads}
            </p>
          </div>
-       </div>
-       </ul>`
+       </li>`
       );
     });
   };
