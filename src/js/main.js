@@ -10,14 +10,14 @@ class Gallery {
     this.divInputSearch = document.querySelector("#inputSearch");
     this.btnLoadMore = document.querySelector(".btnLoadMore");
     this.fetchImages();
+    this.publicFormInput();
+    this.getInputData();
     this.loadMoreBtn();
     console.log(this);
   }
 
   fetchImages() {
     let URL = `https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${this.search}&page=${this.page}&per_page=${this.perPage}&key=${this.apiKey}`;
-    console.log(URL);
-    console.log(this);
     fetch(URL)
       .then((res) => res.json())
       .then((data) => {
@@ -26,13 +26,17 @@ class Gallery {
       .catch((err) => console.log(err));
   }
 
-  publuc = (arrData) => {
+  publicFormInput() {
     this.divInputSearch.innerHTML = inputSearch();
-    this.search = document.querySelector("#search-form")[0];
-    this.search.addEventListener(
-      "input",
-      _.debounce(this.getInputData.bind(this), 700)
-    );
+    let form = document.querySelector("#search-form");
+    form.addEventListener("submit", (event) => {
+      this.search = document.querySelector("#search-form")[0].value;
+      event.preventDefault();
+      this.getInputData();
+    });
+  }
+
+  publuc = (arrData) => {
     this.removeData();
     arrData.map((obj) => {
       this.list.insertAdjacentHTML(
@@ -49,38 +53,46 @@ class Gallery {
                ${obj.views}
            </p>
            <p class="stats-item">
-             <i class="material-icons">comment</i>
-               ${obj.comments}
+           <i class="material-icons">comment</i>
+           ${obj.comments}
            </p>
            <p class="stats-item">
-             <i class="material-icons">cloud_download</i>
-               ${obj.downloads}
+           <i class="material-icons">cloud_download</i>
+           ${obj.downloads}
            </p>
-         </div>
-       </li>`
+           </div>
+           </li>`
       );
     });
   };
 
   getInputData() {
-    this.search = document.querySelector("#search-form")[0].value;
-    let result = `https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${this.search}&page=${this.page}&per_page=${this.perPage}&key=${this.apiKey}`;
-    this.fetchImages(result);
-    return result;
+    let value = document.querySelector(`input[name="query"]`);
+    value.addEventListener("input", (event) => {
+      let newValue = event.target.value;
+      return newValue;
+    });
+
+    if (this.search !== this.newValue) {
+      this.perPage = 12;
+    }
+    this.fetchImages();
+  }
+
+  loadMoreBtn() {
+    this.btnLoadMore.addEventListener("click", () => {
+      let inputValue = document.querySelector("#search-form")[0].value;
+      this.search = inputValue;
+      this.perPage = this.perPage += this.perPage;
+      this.fetchImages();
+      return this.perPage;
+    });
   }
 
   removeData() {
     this.list.innerHTML = "";
   }
-  loadMoreBtn() {
-    this.btnLoadMore.addEventListener("click", () => {
-      this.perPage = this.perPage += this.perPage;
-      console.log(this.search.value);
-      this.getInputData(this.perPage);
-      return this.perPage;
-    });
-  }
 }
-
+let $ = require("jquery");
 let _ = require("lodash");
 new Gallery();
