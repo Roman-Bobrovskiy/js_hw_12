@@ -67,6 +67,31 @@ body {
   display: flex;
   justify-content: center;
 }
+
 .btnLoadMore {
-  border-radius: 5%;
+  color: grey;
+  padding: 15px 15px;
+  text-transform: uppercase;
+  width: 350px;
+  text-decoration: none;
+  text-align: center;
+  margin: 30px 0;
+  border-radius: 15px;
+  display: block;
+  background-image: linear-gradient(
+    to left,
+    transparent,
+    transparent 50%,
+    #a3a3a3 50%,
+    #e2e2e2
+  );
+  background-position: 100% 0;
+  background-size: 200% 100%;
+  transition: all 0.25s ease-in;
+  font: 400 14px tahoma;
+  border: 1px solid #ffffff;
+}
+.btnLoadMore:hover {
+  background-position: 0 0;
+  color: #fff;
 }
