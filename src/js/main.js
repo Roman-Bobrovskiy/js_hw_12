@@ -13,7 +13,6 @@ class Gallery {
     this.publicFormInput();
     this.getInputData();
     this.loadMoreBtn();
-    console.log(this);
   }
 
   fetchImages() {
@@ -21,7 +20,7 @@ class Gallery {
     fetch(URL)
       .then((res) => res.json())
       .then((data) => {
-        this.publuc(data.hits);
+        this.publuCarts(data.hits);
       })
       .catch((err) => console.log(err));
   }
@@ -36,7 +35,7 @@ class Gallery {
     });
   }
 
-  publuc = (arrData) => {
+  publuCarts = (arrData) => {
     this.removeData();
     let markup = cards(arrData);
     this.list.insertAdjacentHTML("beforeend", markup);
@@ -64,10 +63,8 @@ class Gallery {
     this.btnLoadMore.addEventListener("click", () => {
       let inputValue = document.querySelector("#search-form")[0].value;
       this.search = inputValue;
-      this.perPage = this.perPage += this.perPage;
-
+      this.perPage += this.perPage;
       this.fetchImages();
-
       return this.perPage;
     });
   }
