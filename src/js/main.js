@@ -64,6 +64,9 @@ class Gallery {
            </li>`
       );
     });
+    let body = document.querySelector("body");
+    let height = body.getBoundingClientRect().height;
+    this.scrollPage(height);
   };
 
   getInputData() {
@@ -82,34 +85,22 @@ class Gallery {
 
   loadMoreBtn() {
     this.btnLoadMore.addEventListener("click", () => {
-      // let body = document.querySelector("html");
-      // let topY = body.getBoundingClientRect().y;
-
-      // let test = body.getBoundingClientRect();
-      // console.log(test);
-
       let inputValue = document.querySelector("#search-form")[0].value;
       this.search = inputValue;
       this.perPage = this.perPage += this.perPage;
 
-      // this.scrollPage(topY);
-      $("html,body").animate(
-        { scrollTop: document.body.scrollHeight },
-        "smooth"
-      );
-
       this.fetchImages();
+
       return this.perPage;
     });
   }
-  // window.scrollTo - работает криво, использовал
-  // scrollPage(topY) {
-  //   window.scrollTo({
-  //     bottom: topY + window.scrollY,
 
-  //     behavior: "smooth",
-  //   });
-  // }
+  scrollPage(height) {
+    window.scrollTo({
+      top: height,
+      behavior: "smooth",
+    });
+  }
 
   removeData() {
     this.list.innerHTML = "";
