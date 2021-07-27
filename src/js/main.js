@@ -2,6 +2,7 @@ import inputSearch from "../tempaltes/search.hbs";
 import cards from "../tempaltes/cards.hbs";
 import "../../node_modules/basiclightbox/dist/basicLightbox.min.css";
 import * as basicLightbox from "basiclightbox";
+import { notice } from "@pnotify/core";
 
 class Gallery {
   constructor() {
@@ -45,9 +46,12 @@ class Gallery {
     let markup = cards(arrData);
     this.list.insertAdjacentHTML("beforeend", markup);
     if (arrData.length === 0) {
-      alert(`pizda`);
+      const myNotice = notice({
+        text: "There are no images for your request",
+        hide: true,
+        delay: 1500,
+      });
     }
-    console.log(arrData);
     let body = document.querySelector("body");
     let height = body.getBoundingClientRect().height;
     this.scrollPage(height);
