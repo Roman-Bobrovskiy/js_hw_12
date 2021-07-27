@@ -2,16 +2,26 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  margin: 0;
 }
 .wrapHeader {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 3rem;
+  background-color: white;
+  position: fixed;
+  width: 100%;
 }
+
 .wrapMain {
   display: flex;
   justify-content: center;
+  margin-top: 3rem;
 }
-
+.wrapHeader .search-form > input {
+  width: 45rem;
+}
 #gallery {
   display: grid;
   width: 1200px;

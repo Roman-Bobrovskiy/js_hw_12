@@ -38,32 +38,9 @@ class Gallery {
 
   publuc = (arrData) => {
     this.removeData();
-    arrData.map((obj) => {
-      this.list.insertAdjacentHTML(
-        "beforeend",
-        `<li class="photo-card">
-         <img src="${obj.webformatURL}" alt="${obj.tags}" />
-         <div class="stats">
-           <p class="stats-item">
-             <i class="material-icons">thumb_up</i>
-               ${obj.likes}
-           </p>
-           <p class="stats-item">
-             <i class="material-icons">visibility</i>
-               ${obj.views}
-           </p>
-           <p class="stats-item">
-           <i class="material-icons">comment</i>
-           ${obj.comments}
-           </p>
-           <p class="stats-item">
-           <i class="material-icons">cloud_download</i>
-           ${obj.downloads}
-           </p>
-           </div>
-           </li>`
-      );
-    });
+    let markup = cards(arrData);
+    this.list.insertAdjacentHTML("beforeend", markup);
+
     let body = document.querySelector("body");
     let height = body.getBoundingClientRect().height;
     this.scrollPage(height);
