@@ -21,7 +21,9 @@ class Gallery {
   fetchImages() {
     let URL = `https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${this.search}&page=${this.page}&per_page=${this.perPage}&key=${this.apiKey}`;
     fetch(URL)
-      .then((res) => res.json())
+      .then((res) => {
+        return res.json();
+      })
       .then((data) => {
         this.publicCarts(data.hits);
       })
@@ -42,6 +44,10 @@ class Gallery {
     this.removeData();
     let markup = cards(arrData);
     this.list.insertAdjacentHTML("beforeend", markup);
+    if (arrData.length === 0) {
+      alert(`pizda`);
+    }
+    console.log(arrData);
     let body = document.querySelector("body");
     let height = body.getBoundingClientRect().height;
     this.scrollPage(height);
@@ -52,6 +58,7 @@ class Gallery {
     let value = document.querySelector(`input[name="query"]`);
     value.addEventListener("input", (event) => {
       let newValue = event.target.value;
+
       return newValue;
     });
 
@@ -66,7 +73,7 @@ class Gallery {
     this.btnLoadMore.addEventListener("click", () => {
       let inputValue = document.querySelector("#search-form")[0].value;
       this.search = inputValue;
-      this.perPage += this.perPage;
+      this.perPage = this.perPage + 12;
       this.fetchImages();
       return this.perPage;
     });
@@ -87,8 +94,9 @@ class Gallery {
       });
     });
   }
+
   openMobal(url) {
-    basicLightbox.create(`<img src="${url}" >`).show();
+    basicLightbox.create(`<img src="${url}">`).show();
   }
 
   removeData() {
