@@ -1,5 +1,8 @@
 import inputSearch from "../tempaltes/search.hbs";
 import cards from "../tempaltes/cards.hbs";
+import "../../node_modules/basiclightbox/dist/basicLightbox.min.css";
+import * as basicLightbox from "basiclightbox";
+
 class Gallery {
   constructor() {
     this.search = "";
@@ -20,7 +23,7 @@ class Gallery {
     fetch(URL)
       .then((res) => res.json())
       .then((data) => {
-        this.publuCarts(data.hits);
+        this.publicCarts(data.hits);
       })
       .catch((err) => console.log(err));
   }
@@ -35,14 +38,14 @@ class Gallery {
     });
   }
 
-  publuCarts = (arrData) => {
+  publicCarts = (arrData) => {
     this.removeData();
     let markup = cards(arrData);
     this.list.insertAdjacentHTML("beforeend", markup);
-
     let body = document.querySelector("body");
     let height = body.getBoundingClientRect().height;
     this.scrollPage(height);
+    this.fullSizeImg();
   };
 
   getInputData() {
@@ -76,10 +79,21 @@ class Gallery {
     });
   }
 
+  fullSizeImg() {
+    let img = document.querySelectorAll("img");
+    img.forEach((image) => {
+      image.addEventListener("click", (elem) => {
+        this.openMobal(elem.path[0].src);
+      });
+    });
+  }
+  openMobal(url) {
+    basicLightbox.create(`<img src="${url}" >`).show();
+  }
+
   removeData() {
     this.list.innerHTML = "";
   }
 }
-let $ = require("jquery");
-let _ = require("lodash");
+
 new Gallery();
