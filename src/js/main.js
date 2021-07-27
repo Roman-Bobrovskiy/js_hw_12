@@ -54,7 +54,9 @@ class Gallery {
     }
     let body = document.querySelector("body");
     let height = body.getBoundingClientRect().height;
-    this.scrollPage(height);
+    if (this.perPage > 12) {
+      this.scrollPage(height);
+    }
     this.fullSizeImg();
   };
 

@@ -27,7 +27,7 @@ body {
   display: grid;
   width: 1200px;
   grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  grid-auto-rows: 260px;
+  grid-auto-rows: 225px;
   grid-gap: 12px;
   padding: 0;
   list-style: none;
@@ -94,4 +94,219 @@ body {
 .btnLoadMore:hover {
   background-position: 0 0;
   color: #fff;
+}
+
+@media (max-width: 600px) {
+  .wrapHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    z-index: 10000;
+  }
+
+  .wrapGallery {
+    max-width: 600px;
+  }
+  .wrapHeader .search-form > input {
+    width: 15rem;
+  }
+  #gallery {
+    display: flex;
+    max-width: 580px;
+    justify-content: center;
+    flex-direction: column;
+  }
+  #gallery > li {
+    display: flex;
+    justify-content: center;
+  }
+  #gallery > li > img {
+    display: flex;
+    justify-content: center;
+    height: 18rem;
+    object-fit: contain;
+  }
+  .stats {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    text-align: center;
+    color: gray;
+  }
+  .stats > p {
+    display: flex;
+    align-items: center;
+  }
+  .basicLightbox {
+    width: 100%;
+
+    padding: 0;
+    margin: 0;
+  }
+}
+
+@media (max-width: 992px) {
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .wrapHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    z-index: 10000;
+  }
+
+  .wrapGallery {
+    max-width: 1199px;
+  }
+  .wrapHeader .search-form > input {
+    width: 15rem;
+  }
+  #gallery {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+  }
+  #gallery > li {
+    display: flex;
+    justify-content: center;
+  }
+  #gallery > li > img {
+    display: flex;
+    justify-content: center;
+    object-fit: contain;
+  }
+  .stats {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    text-align: center;
+    color: gray;
+  }
+  .stats > p {
+    display: flex;
+    align-items: center;
+  }
+  .basicLightbox {
+    width: 100%;
+
+    padding: 0;
+    margin: 0;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .wrapHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    z-index: 10000;
+  }
+
+  .wrapGallery {
+    max-width: 992px;
+  }
+  .wrapHeader .search-form > input {
+    width: 15rem;
+  }
+  #gallery {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+  }
+  #gallery > li {
+    display: flex;
+    justify-content: center;
+  }
+  #gallery > li > img {
+    display: flex;
+    justify-content: center;
+    object-fit: contain;
+  }
+  .stats {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    text-align: center;
+    color: gray;
+  }
+  .stats > p {
+    display: flex;
+    align-items: center;
+  }
+  .basicLightbox {
+    width: 100%;
+
+    padding: 0;
+    margin: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    margin: 1rem;
+  }
+  .wrapHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    z-index: 10000;
+  }
+
+  .wrapGallery {
+    max-width: 480px;
+  }
+  .wrapHeader .search-form > input {
+    width: 15rem;
+  }
+  #gallery {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+  }
+  #gallery > li {
+    display: flex;
+    justify-content: center;
+  }
+  #gallery > li > img {
+    display: flex;
+    justify-content: center;
+    object-fit: contain;
+  }
+  .stats {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    text-align: center;
+    color: gray;
+  }
+  .stats > p {
+    display: flex;
+    align-items: center;
+  }
+  .basicLightbox {
+    width: 100%;
+
+    padding: 0;
+    margin: 0;
+  }
 }
